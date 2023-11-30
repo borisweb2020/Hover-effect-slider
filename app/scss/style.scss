@@ -1,3 +1,5 @@
+@import 'var.scss';
+
 *,
 *::before,
 *::after{
@@ -18,6 +20,8 @@ body{
 	overflow-x: hidden;
 
 	position: relative;
+
+	background-color: #141414;
 }
 
 h1, h2, h3, h4, h5, h6, p{
@@ -70,10 +74,112 @@ ul{
 	list-style-type: none;
 }
 
-.container{
-	width: 100%;
-	max-width: 1430px;
-  padding: 0 15px;
-	margin: 0 auto;
+.wrapper{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100vh;
 }
 
+.inner{
+	display: flex;
+	column-gap: .5rem;
+
+	perspective: calc($index * 35);
+
+	& .item:hover{
+		transform: translateZ(calc($index * 10));
+		filter: inherit;
+	}
+
+	// Right elements
+	& .item:hover + *{
+		transform: translateZ(calc($index * 8.5)) rotateY(35deg);
+		z-index: -1;
+		filter: inherit;
+	}
+
+	& .item:hover + * + *{
+		transform: translateZ(calc($index * 5.6)) rotateY(40deg);
+		z-index: -2;
+		filter: inherit;
+	}
+
+	& .item:hover + * + * + *{
+		transform: translateZ(calc($index * 2.4)) rotateY(30deg);
+		z-index: -3;
+		filter: inherit;
+	}
+
+	& .item:hover + * + * + * + *{
+		transform: translateZ(calc($index * .6)) rotateY(14deg);
+		z-index: -4;
+		filter: inherit;
+	}
+}
+
+.item{
+	width: calc($index * 3);
+	height: calc($index * 12);
+
+	background-color: $black;
+	background-size: cover;
+	background-position: center;
+
+	cursor: pointer;
+	position: relative;
+
+	filter: grayscale(1) brightness(.5);
+
+	transition: transform 1.25s $transition, filter 3s $transition, width 1.25s $transition;
+	will-change: transform, filter;
+	// Заполнить зазоры между элементами
+	// Чтобы не было бага при наведении
+	&::before, &::after{
+		content: '';
+		position: absolute;
+		width: 20px;
+		height: 100%;
+		// background-color: $white;
+	}
+
+	&::after{
+		left: calc($index * -1);
+	}
+
+	&::before{
+		right: calc($index * -1);
+	}
+}
+
+// Left elements
+.item:has(+ :hover){
+	transform: translateZ(calc($index * 8.5)) rotateY(-35deg);
+	filter: inherit;
+}
+
+.item:has(+ * + :hover){
+	transform: translateZ(calc($index * 5.6)) rotateY(-40deg);
+	filter: inherit;
+}
+
+.item:has(+ * + * + :hover){
+	transform: translateZ(calc($index * 2.4)) rotateY(-30deg);
+	filter: inherit;
+}
+
+.item:has(+ * + * + * + :hover){
+	transform: translateZ(calc($index * .6)) rotateY(-14deg);
+	filter: inherit;
+}
+
+
+.inner .item:active,
+.inner .item:focus{
+	width: 28vw;
+	transform: translateZ(calc($index * 10));
+	filter: inherit;
+	z-index: 100;
+	margin: 0 .45vw;
+}
