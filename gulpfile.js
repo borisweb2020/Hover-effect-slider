@@ -7,6 +7,7 @@ const prefixer    = require('gulp-autoprefixer');
 const clean       = require('gulp-clean');
 const imagemin    = require('gulp-imagemin');
 const newer       = require('gulp-newer');
+const babel       = require('gulp-babel');
 
 /** Functions Declaration */
 function $browserSync(){
@@ -21,6 +22,15 @@ function style(){
 	.pipe(scss({outputStyle: 'expanded'}))
 	.pipe(prefixer({overrideBrowserslist: ['last 10 versions'], grid: true}))
 	.pipe(dest('app/style'))
+	.pipe(browserSync.stream())
+}
+
+function script(){
+	return src('app/js/main.js')
+	.pipe(babel({
+		presets: ['@babel/env']
+	}))
+	.pipe(dest('app/script'))
 	.pipe(browserSync.stream())
 }
 
@@ -43,12 +53,14 @@ function imageMinimize(){
 
 function watching(){
 	watch('app/scss/*.scss', style);
+	watch('app/js/main.js', script);
 	watch('app/*.html').on('change', browserSync.reload);
 }
 
 function copy(){
 	return src([
 		'app/style/*.css',
+		'app/script/main.js',
 		'app/images/compressed/*.*',
 		'app/favicons/*.*',
 		'app/*.html'
@@ -60,5 +72,5 @@ function copy(){
 exports.imageMinimize = imageMinimize;
 exports.cleanImages = cleanImages;
 
-exports.build   = series(cleanImages, imageMinimize, cleanDist, style, copy);
-exports.default = parallel(style, $browserSync, watching);
+exports.build   = series(cleanImages, imageMinimize, cleanDist, style, script, copy);
+exports.default = parallel(style, script, $browserSync, watching);
