@@ -209,3 +209,51 @@ ul {
   z-index: 100;
   margin: 0 0.45vw;
 }
+
+.item:nth-child(1) {
+  background-image: url("../images/compressed/1.jpg");
+}
+
+.item:nth-child(2) {
+  background-image: url("../images/compressed/2.jpg");
+}
+
+.item:nth-child(3) {
+  background-image: url("../images/compressed/3.jpg");
+}
+
+.item:nth-child(4) {
+  background-image: url("../images/compressed/4.jpg");
+}
+
+.item:nth-child(5) {
+  background-image: url("../images/compressed/5.jpg");
+}
+
+.item:nth-child(6) {
+  background-image: url("../images/compressed/6.jpg");
+}
+
+.item:nth-child(7) {
+  background-image: url("../images/compressed/7.jpg");
+}
+
+.item:nth-child(8) {
+  background-image: url("../images/compressed/8.jpg");
+}
+
+.item:nth-child(9) {
+  background-image: url("../images/compressed/9.jpg");
+}
+
+.item:nth-child(10) {
+  background-image: url("../images/compressed/10.jpg");
+}
+
+.item:nth-child(11) {
+  background-image: url("../images/compressed/11.jpg");
+}
+
+.item:nth-child(12) {
+  background-image: url("../images/compressed/12.jpg");
+}

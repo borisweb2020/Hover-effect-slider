@@ -183,3 +183,9 @@ ul{
 	z-index: 100;
 	margin: 0 .45vw;
 }
+
+@for $n from 1 to 13{
+	.item:nth-child(#{$n}) {
+		background-image: url('../images/compressed/#{$n}.jpg');
+	}
+}
