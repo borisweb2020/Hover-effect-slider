@@ -14,6 +14,7 @@ body{
 	-webkit-font-smoothing: antialiased;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	font-size: 1.6rem; // 16px
+	line-height: 1;
 	margin: 0;
 
 	min-width: 320px;
@@ -55,24 +56,6 @@ button{
 	}
 }
 
-input, select, textarea{
-	color: inherit;
-	font: inherit;
-	outline: none;
-	&:focus{
-		outline: none;
-	}
-	&::placeholder{
-		font: inherit;
-		color: inherit;
-	}
-}
-
-ul{
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
 
 .wrapper{
 	display: flex;
@@ -84,39 +67,11 @@ ul{
 
 .inner{
 	display: flex;
-	column-gap: .5rem;
+	column-gap: .5rem; // 5px
+	background-color: #ff0036;
 
 	perspective: calc($index * 35);
 
-	& .item:hover{
-		transform: translateZ(calc($index * 10));
-		filter: inherit;
-	}
-
-	// Right elements
-	& .item:hover + *{
-		transform: translateZ(calc($index * 8.5)) rotateY(35deg);
-		z-index: -1;
-		filter: inherit;
-	}
-
-	& .item:hover + * + *{
-		transform: translateZ(calc($index * 5.6)) rotateY(40deg);
-		z-index: -2;
-		filter: inherit;
-	}
-
-	& .item:hover + * + * + *{
-		transform: translateZ(calc($index * 2.4)) rotateY(30deg);
-		z-index: -3;
-		filter: inherit;
-	}
-
-	& .item:hover + * + * + * + *{
-		transform: translateZ(calc($index * .6)) rotateY(14deg);
-		z-index: -4;
-		filter: inherit;
-	}
 }
 
 .item{
@@ -128,64 +83,17 @@ ul{
 	background-position: center;
 
 	cursor: pointer;
-	position: relative;
+	transition: transform 1s $transition;
 
-	filter: grayscale(1) brightness(.5);
-
-	transition: transform 1.25s $transition, filter 3s $transition, width 1.25s $transition;
-	will-change: transform, filter;
-	// Заполнить зазоры между элементами
-	// Чтобы не было бага при наведении
-	&::before, &::after{
-		content: '';
-		position: absolute;
-		width: 20px;
-		height: 100%;
-		// background-color: $white;
-	}
-
-	&::after{
-		left: calc($index * -1);
-	}
-
-	&::before{
-		right: calc($index * -1);
-	}
-}
-
-// Left elements
-.item:has(+ :hover){
-	transform: translateZ(calc($index * 8.5)) rotateY(-35deg);
-	filter: inherit;
-}
-
-.item:has(+ * + :hover){
-	transform: translateZ(calc($index * 5.6)) rotateY(-40deg);
-	filter: inherit;
-}
-
-.item:has(+ * + * + :hover){
-	transform: translateZ(calc($index * 2.4)) rotateY(-30deg);
-	filter: inherit;
-}
-
-.item:has(+ * + * + * + :hover){
-	transform: translateZ(calc($index * .6)) rotateY(-14deg);
-	filter: inherit;
-}
-
-
-.inner .item:active,
-.inner .item:focus{
-	width: 28vw;
-	transform: translateZ(calc($index * 10));
-	filter: inherit;
-	z-index: 100;
-	margin: 0 .45vw;
+	// filter: grayscale(1) brightness(.5);
 }
 
 @for $n from 1 to 13{
 	.item:nth-child(#{$n}) {
 		background-image: url('../images/compressed/#{$n}.jpg');
 	}
+}
+
+.item.hover{
+	transform: translateZ(calc($index * 8.5));
 }
