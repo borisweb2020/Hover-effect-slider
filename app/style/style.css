@@ -136,7 +136,11 @@ button:focus {
   background-image: url("../images/compressed/12.jpg");
 }
 
+.item:nth-child(13) {
+  background-image: url("../images/compressed/13.jpg");
+}
+
 .item.hover {
-  -webkit-transform: translateZ(calc((1vw + 1vh) * 8.5));
-          transform: translateZ(calc((1vw + 1vh) * 8.5));
+  -webkit-transform: translateZ(calc((1vw + 1vh) * 10));
+          transform: translateZ(calc((1vw + 1vh) * 10));
 }

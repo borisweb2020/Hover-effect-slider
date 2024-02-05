@@ -88,12 +88,13 @@ button{
 	// filter: grayscale(1) brightness(.5);
 }
 
-@for $n from 1 to 13{
+@for $n from 1 to 14{
 	.item:nth-child(#{$n}) {
 		background-image: url('../images/compressed/#{$n}.jpg');
 	}
 }
 
 .item.hover{
-	transform: translateZ(calc($index * 8.5));
+	transform: translateZ(calc($index * 10));
 }
+

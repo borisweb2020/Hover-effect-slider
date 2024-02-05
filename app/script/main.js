@@ -3,11 +3,36 @@
 var $item = document.querySelectorAll('.item');
 $item.forEach(function (item) {
   item.addEventListener('mouseenter', function (event) {
-    event.currentTarget.classList.add('hover');
+    var element = event.currentTarget;
+    element.classList.add('hover');
     console.log('currentTarget', event.currentTarget.className);
-  });
-  item.addEventListener('mouseleave', function (event) {
-    event.currentTarget.classList.remove('hover');
-    console.log('currentTarget', event.currentTarget.className);
+    var nextElement = element.nextElementSibling;
+    var previousElement = element.previousElementSibling;
+    for (var i = 1; i < 5; i++) {
+      if (nextElement) {
+        nextElement.classList.add("hover".concat(i));
+        nextElement = nextElement.nextElementSibling;
+      }
+      if (previousElement) {
+        previousElement.classList.add("".concat(i, "hover"));
+        previousElement = previousElement.previousElementSibling;
+      }
+    }
+    element.addEventListener('mouseleave', function () {
+      element.classList.remove('hover');
+      var nextElement = element.nextElementSibling;
+      var previousElement = element.previousElementSibling;
+      for (var _i = 1; _i < 5; _i++) {
+        if (nextElement) {
+          nextElement.classList.remove("hover".concat(_i));
+          nextElement = nextElement.nextElementSibling;
+        }
+        if (previousElement) {
+          previousElement.classList.remove("".concat(_i, "hover"));
+          previousElement = previousElement.previousElementSibling;
+        }
+      }
+      console.clear();
+    });
   });
 });
