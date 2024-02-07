@@ -9,11 +9,11 @@ $item.forEach(item => {
 		let previousElement = element.previousElementSibling;
 		for(let i = 1; i < 5; i++){
 			if(nextElement){
-				nextElement.classList.add(`hover${i}`);
+				nextElement.classList.add(`hover-${i}`);
 				nextElement = nextElement.nextElementSibling;
 			}
 			if(previousElement){
-				previousElement.classList.add(`${i}hover`);
+				previousElement.classList.add(`pre-${i}hover`);
 				previousElement = previousElement.previousElementSibling;
 			}
 		}
@@ -24,11 +24,11 @@ $item.forEach(item => {
 			let previousElement = element.previousElementSibling;
 			for(let i = 1; i < 5; i++){
 				if(nextElement){
-					nextElement.classList.remove(`hover${i}`);
+					nextElement.classList.remove(`hover-${i}`);
 					nextElement = nextElement.nextElementSibling;
 				}
 				if(previousElement){
-					previousElement.classList.remove(`${i}hover`);
+					previousElement.classList.remove(`pre-${i}hover`);
 					previousElement = previousElement.previousElementSibling;
 				}
 			}

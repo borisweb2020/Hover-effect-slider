@@ -10,11 +10,11 @@ $item.forEach(function (item) {
     var previousElement = element.previousElementSibling;
     for (var i = 1; i < 5; i++) {
       if (nextElement) {
-        nextElement.classList.add("hover".concat(i));
+        nextElement.classList.add("hover-".concat(i));
         nextElement = nextElement.nextElementSibling;
       }
       if (previousElement) {
-        previousElement.classList.add("".concat(i, "hover"));
+        previousElement.classList.add("pre-".concat(i, "hover"));
         previousElement = previousElement.previousElementSibling;
       }
     }
@@ -24,11 +24,11 @@ $item.forEach(function (item) {
       var previousElement = element.previousElementSibling;
       for (var _i = 1; _i < 5; _i++) {
         if (nextElement) {
-          nextElement.classList.remove("hover".concat(_i));
+          nextElement.classList.remove("hover-".concat(_i));
           nextElement = nextElement.nextElementSibling;
         }
         if (previousElement) {
-          previousElement.classList.remove("".concat(_i, "hover"));
+          previousElement.classList.remove("pre-".concat(_i, "hover"));
           previousElement = previousElement.previousElementSibling;
         }
       }
