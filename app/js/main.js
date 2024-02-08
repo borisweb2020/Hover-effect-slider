@@ -3,15 +3,19 @@ const $item = document.querySelectorAll('.item');
 $item.forEach(item => {
 	item.addEventListener('mouseenter', event => {
 		let element = event.currentTarget;
-		toggleActiveClass(element, 'add');
+		toggleHoverClass(element, 'add');
 
 		element.addEventListener('mouseleave', () => {
-			toggleActiveClass(element, 'remove');
+			toggleHoverClass(element, 'remove');
 		});
+	});
+
+	item.addEventListener('click', () => {
+		item.classList.toggle('active');
 	});
 });
 
-function toggleActiveClass(el, mode){
+function toggleHoverClass(el, mode){
 	el.classList[mode]('hover');
 	let nextElement = el.nextElementSibling;
 	let previousElement = el.previousElementSibling;

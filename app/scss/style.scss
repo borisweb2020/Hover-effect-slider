@@ -124,3 +124,9 @@ h1, h2, h3, h4, h5, h6, p{
 	transform: translateZ(calc($index * .6)) rotateY(-14deg);
 }
 
+.item.active{
+	width: 28vw;
+	transform: translateZ((calc($index *10)));
+	filter: inherit;
+	z-index: 100;
+}

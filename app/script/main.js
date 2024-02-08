@@ -4,13 +4,16 @@ var $item = document.querySelectorAll('.item');
 $item.forEach(function (item) {
   item.addEventListener('mouseenter', function (event) {
     var element = event.currentTarget;
-    toggleActiveClass(element, 'add');
+    toggleHoverClass(element, 'add');
     element.addEventListener('mouseleave', function () {
-      toggleActiveClass(element, 'remove');
+      toggleHoverClass(element, 'remove');
     });
   });
+  item.addEventListener('click', function () {
+    item.classList.toggle('active');
+  });
 });
-function toggleActiveClass(el, mode) {
+function toggleHoverClass(el, mode) {
   el.classList[mode]('hover');
   var nextElement = el.nextElementSibling;
   var previousElement = el.previousElementSibling;

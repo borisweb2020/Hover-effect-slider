@@ -220,3 +220,12 @@ h1, h2, h3, h4, h5, h6, p {
   -webkit-transform: translateZ(calc((1vw + 1vh) * 0.6)) rotateY(-14deg);
           transform: translateZ(calc((1vw + 1vh) * 0.6)) rotateY(-14deg);
 }
+
+.item.active {
+  width: 28vw;
+  -webkit-transform: translateZ(calc((1vw + 1vh) * 10));
+          transform: translateZ(calc((1vw + 1vh) * 10));
+  -webkit-filter: inherit;
+          filter: inherit;
+  z-index: 100;
+}
