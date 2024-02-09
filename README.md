@@ -25,3 +25,4 @@ npm install     # Install project dependencies
 gulp build      # Build the project and generate the 'dist' folder
 ```
 The resulting `dist` folder contains the optimized and minified files suitable for hosting on a web server.
+For instance, a website with the slider can be viewed [here](https://wave.portfolio-boriskharchenko.com)
