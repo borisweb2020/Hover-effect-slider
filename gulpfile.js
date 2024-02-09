@@ -13,7 +13,8 @@ const babel       = require('gulp-babel');
 function $browserSync(){
 	browserSync.init({
 		server: {baseDir: "app/"},
-		notify: false
+		notify: false,
+		online: true
 	});
 }
 
