@@ -1,6 +1,7 @@
 "use strict";
 
 var $item = document.querySelectorAll('.item');
+var $outField = document.querySelector('.wrapper');
 $item.forEach(function (item) {
   item.addEventListener('mouseenter', function (event) {
     var element = event.currentTarget;
@@ -10,8 +11,15 @@ $item.forEach(function (item) {
     });
   });
   item.addEventListener('click', function () {
+    removeActiveClass();
     item.classList.toggle('active');
   });
+});
+$outField.addEventListener('click', function (event) {
+  var isInner = event.target.closest('.inner');
+  if (!isInner) {
+    removeActiveClass();
+  }
 });
 function toggleHoverClass(el, mode) {
   el.classList[mode]('hover');
@@ -27,4 +35,9 @@ function toggleHoverClass(el, mode) {
       previousElement = previousElement.previousElementSibling;
     }
   }
+}
+function removeActiveClass() {
+  $item.forEach(function (item) {
+    item.classList.remove('active');
+  });
 }

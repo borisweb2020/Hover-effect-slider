@@ -1,4 +1,5 @@
 const $item = document.querySelectorAll('.item');
+const $outField = document.querySelector('.wrapper');
 
 $item.forEach(item => {
 	item.addEventListener('mouseenter', event => {
@@ -11,8 +12,16 @@ $item.forEach(item => {
 	});
 
 	item.addEventListener('click', () => {
+		removeActiveClass();
 		item.classList.toggle('active');
 	});
+});
+
+$outField.addEventListener('click', (event) => {
+  const isInner = event.target.closest('.inner');
+  if (!isInner) {
+    removeActiveClass();
+  }
 });
 
 function toggleHoverClass(el, mode){
@@ -29,4 +38,10 @@ function toggleHoverClass(el, mode){
 			previousElement = previousElement.previousElementSibling;
 		}
 	}
+}
+
+function removeActiveClass(){
+	$item.forEach(item => {
+		item.classList.remove('active');
+	});
 }
