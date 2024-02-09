@@ -53,10 +53,10 @@ body {
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  -webkit-transition: -webkit-transform 1s cubic-bezier(0.1, 0.7, 0, 1), -webkit-filter 3s cubic-bezier(0.1, 0.7, 0, 1);
-  transition: -webkit-transform 1s cubic-bezier(0.1, 0.7, 0, 1), -webkit-filter 3s cubic-bezier(0.1, 0.7, 0, 1);
-  transition: transform 1s cubic-bezier(0.1, 0.7, 0, 1), filter 3s cubic-bezier(0.1, 0.7, 0, 1);
-  transition: transform 1s cubic-bezier(0.1, 0.7, 0, 1), filter 3s cubic-bezier(0.1, 0.7, 0, 1), -webkit-transform 1s cubic-bezier(0.1, 0.7, 0, 1), -webkit-filter 3s cubic-bezier(0.1, 0.7, 0, 1);
+  -webkit-transition: width 0.5s linear, height 0.5s linear, -webkit-transform 1s cubic-bezier(0.1, 0.7, 0, 1), -webkit-filter 3s cubic-bezier(0.1, 0.7, 0, 1);
+  transition: width 0.5s linear, height 0.5s linear, -webkit-transform 1s cubic-bezier(0.1, 0.7, 0, 1), -webkit-filter 3s cubic-bezier(0.1, 0.7, 0, 1);
+  transition: transform 1s cubic-bezier(0.1, 0.7, 0, 1), filter 3s cubic-bezier(0.1, 0.7, 0, 1), width 0.5s linear, height 0.5s linear;
+  transition: transform 1s cubic-bezier(0.1, 0.7, 0, 1), filter 3s cubic-bezier(0.1, 0.7, 0, 1), width 0.5s linear, height 0.5s linear, -webkit-transform 1s cubic-bezier(0.1, 0.7, 0, 1), -webkit-filter 3s cubic-bezier(0.1, 0.7, 0, 1);
   -webkit-filter: grayscale(1) brightness(0.5);
           filter: grayscale(1) brightness(0.5);
   will-change: transform, filter;
@@ -224,4 +224,76 @@ body {
   -webkit-filter: inherit;
           filter: inherit;
   z-index: 100;
+}
+
+@media (max-width: 768.98px) {
+  .inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-column-gap: normal;
+       -moz-column-gap: normal;
+            column-gap: normal;
+    row-gap: 1rem;
+    -webkit-perspective: calc((1vw + 1vh) * 40);
+            perspective: calc((1vw + 1vh) * 40);
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .item {
+    width: calc((1vw + 1vh) * 25);
+    height: calc((1vw + 1vh) * 3);
+  }
+  .item::before, .item::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 10px;
+  }
+  .item::before {
+    right: 0;
+    bottom: 100%;
+  }
+  .item::after {
+    left: 0;
+    top: 100%;
+  }
+  .item.hover-1 {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 8.5)) rotateX(-35deg);
+            transform: translateZ(calc((1vw + 1vh) * 8.5)) rotateX(-35deg);
+  }
+  .item.hover-2 {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 5.6)) rotateX(-40deg);
+            transform: translateZ(calc((1vw + 1vh) * 5.6)) rotateX(-40deg);
+  }
+  .item.hover-3 {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 2.4)) rotateX(-30deg);
+            transform: translateZ(calc((1vw + 1vh) * 2.4)) rotateX(-30deg);
+  }
+  .item.hover-4 {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 0.6)) rotateX(-14deg);
+            transform: translateZ(calc((1vw + 1vh) * 0.6)) rotateX(-14deg);
+  }
+  .item.pre-1hover {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 8.5)) rotateX(35deg);
+            transform: translateZ(calc((1vw + 1vh) * 8.5)) rotateX(35deg);
+  }
+  .item.pre-2hover {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 5.6)) rotateX(40deg);
+            transform: translateZ(calc((1vw + 1vh) * 5.6)) rotateX(40deg);
+  }
+  .item.pre-3hover {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 2.4)) rotateX(30deg);
+            transform: translateZ(calc((1vw + 1vh) * 2.4)) rotateX(30deg);
+  }
+  .item.pre-4hover {
+    -webkit-transform: translateZ(calc((1vw + 1vh) * 0.6)) rotateX(14deg);
+            transform: translateZ(calc((1vw + 1vh) * 0.6)) rotateX(14deg);
+  }
+  .item.active {
+    width: 60vw;
+    height: 40vh;
+  }
 }

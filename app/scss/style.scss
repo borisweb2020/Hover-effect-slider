@@ -48,7 +48,7 @@ body{
 	background-position: center;
 
 	cursor: pointer;
-	transition: transform 1s $transition, filter 3s $transition;
+	transition: transform 1s $transition, filter 3s $transition, width .5s linear, height .5s linear;
 	filter: grayscale(1) brightness(.5);
 	will-change: transform, filter;
 
@@ -124,3 +124,5 @@ body{
 	filter: inherit;
 	z-index: 100;
 }
+
+@import 'media.scss';
